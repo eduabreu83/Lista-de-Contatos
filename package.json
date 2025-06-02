@@ -1,0 +1,29 @@
+{
+  "name": "lista-de-contatos",
+  "version": "1.0.0",
+  "main": "src/server.ts",
+  "scripts": {
+   "dev": "node --import=tsx --watch ./src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduabreu83/Lista-de-Contatos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduabreu83/Lista-de-Contatos/issues"
+  },
+  "homepage": "https://github.com/eduabreu83/Lista-de-Contatos#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "helmet": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.29",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
