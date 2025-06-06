@@ -1,26 +1,27 @@
 import express from "express";
 import { readFile, writeFile } from "fs/promises";
-
-const dataSource = require('../data/list.txt');
+const dataSource = '../data/list.txt';
 const router = express.Router();
 
-router.post('/contato',async (req, res) => {
+
+import { Request, Response } from "express";
+
+router.post('/contato', async (req: Request, res: Response) => {
   const { name } = req.body;
 
-  if (!name || name.length < 2) {
+  if (typeof name !== 'string' || name.length < 2) {
     return res.json({ error: "Name is required com pelo menos 2 caracteres" });
   }
 
   let list: string[] = [];
-
-  try {
+  try{
     const data = await readFile(dataSource, { encoding: 'utf8' });
     list = data.split('\n');
-  } catch (err) {
-    // Handle file not found or other errors if needed
-  }
+  } catch (err) {}
+
   list.push(name);
-  await writeFile(dataSource, list.join('\n'), { encoding: 'utf8' });
+  await writeFile(dataSource, list.join('\n'));
+
   res.status(201).json({ contato: name });
 });
 
