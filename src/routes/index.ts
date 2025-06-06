@@ -1,15 +1,12 @@
 import express from "express";
 import { readFile, writeFile } from "fs/promises";
-const dataSource = '../data/list.txt';
+const dataSource = './data/list.txt';
 const router = express.Router();
 
 
-import { Request, Response } from "express";
-
-router.post('/contato', async (req: Request, res: Response) => {
-  const { name } = req.body;
-
-  if (typeof name !== 'string' || name.length < 2) {
+router.post('/contato', async (req, res) => {
+  const {name}= req.body;
+  if (!name || name.length < 2) {
     return res.json({ error: "Name is required com pelo menos 2 caracteres" });
   }
 
