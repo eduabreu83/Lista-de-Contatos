@@ -13,7 +13,7 @@ export const getContacts = async () => {
     return list;
 }
 
-export const addContact = async (name: string) => { 
+export const createContact = async (name: string) => { 
     let list = await getContacts();
     list.push(name);
   await writeFile(dataSource, list.join('\n'));
