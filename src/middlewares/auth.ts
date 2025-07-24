@@ -1,11 +1,12 @@
 import { RequestHandler } from 'express';
 
 export const privateRequest: RequestHandler = (req, res, next) => {
-    // fazer a autorizaçao do usuário
-  let logged = true;
-  if (logged) {
-    next();
-  } else {
-    res.status(401).json({ message: 'Unauthorized' }); 
+
+  if (req.headers.authorization) {
+    let authorizationToken = req.headers.authorization.split(' ')[1];
+      if (authorizationToken === '1234') {
+        return next();
+    }
   }
+  res.status(401).json({ message: 'Unauthorized' }); 
 }

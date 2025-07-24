@@ -4,6 +4,7 @@ import { createContact, deleteContact, getContacts } from "../services/contact";
 export const getContactsController:RequestHandler = async (req, res) => {     
     let list = await getContacts();
     res.json({ contato: list });
+
 };
 
 export const createContactsController: RequestHandler = async (req, res) => {
@@ -26,3 +27,4 @@ export const deleteContactsController: RequestHandler = async (req, res) => {
   await deleteContact(name as string);
   res.json({contato:name} );
 };
+
